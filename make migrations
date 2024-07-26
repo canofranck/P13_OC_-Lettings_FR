@@ -1,0 +1,18 @@
+python manage.py makemigrations lettings
+python manage.py makemigrations profiles
+python manage.py migrate lettings
+python manage.py migrate profiles
+creer la migration de données de lettings 002_migrate_data.py
+python manage.py migrate lettings
+creer la migration de données de profiles 002_migrate_data.py
+python manage.py migrate profiles
+
+creer la migration de oc_lettings_site pour remove old modle 0002_remove_old_models.py
+python manage.py migrate oc_lettings_site
+
+deplacer les fichier template
+
+changer les urls 
+
+
+
