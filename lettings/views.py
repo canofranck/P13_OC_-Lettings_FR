@@ -29,7 +29,14 @@ def index(request):
 
 
 def letting(request, letting_id):
-    letting = Letting.objects.get(id=letting_id)
+    try:
+        letting = Letting.objects.get(id=int(letting_id))
+    except Letting.DoesNotExist:
+        error = f"Letting id n°{letting_id} does not exist !"
+        return render(request, "404.html", {"error": error})
+    except ValueError:
+        error = f"ValueError : an number is requires but got : {letting_id}"
+        return render(request, "404.html", {"error": error})
     context = {
         'title': letting.title,
         'address': letting.address,

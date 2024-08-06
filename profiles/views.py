@@ -29,6 +29,8 @@ def profile(request, username):
     try:
         profile = Profile.objects.get(user__username=username)
     except Profile.DoesNotExist:
-        raise Http404("Profile not found.")
+        error = (f"Profile Not Exist : Username {username} "
+                 "does not exist !")
+        return render(request, "404.html", {"error": error})
     context = {'profile': profile}
     return render(request, 'profiles/profile.html', context)
