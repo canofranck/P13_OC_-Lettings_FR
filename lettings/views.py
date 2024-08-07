@@ -1,3 +1,10 @@
+"""
+lettings/views.py
+
+This module contains the Django view functions for displaying
+listings of lettings and the details of individual lettings.
+"""
+
 from django.shortcuts import render
 from lettings.models import Letting
 
@@ -12,6 +19,18 @@ from lettings.models import Letting
 
 
 def index(request):
+    """
+        View function for displaying a list of lettings.
+        This view retrieves all Letting objects from the database
+        and passes them to the 'lettings/index.html' template.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+
+        Returns:
+            HttpResponse:The rendered HTML page displaying the list of lettings
+        """
+
     lettings_list = Letting.objects.all()
     context = {'lettings_list': lettings_list}
     return render(request, 'lettings/index.html', context)
@@ -29,6 +48,21 @@ def index(request):
 
 
 def letting(request, letting_id):
+    """
+        View function for displaying a single letting's details.
+        This view retrieves a Letting object based on the provided letting_id
+        and passes its details to the 'lettings/letting.html' template.
+
+    Args:
+        request: The HTTP request object.
+        letting_id: The ID of the letting to be retrieved.
+
+    Returns:
+        HttpResponse: The rendered HTML page for the letting if found.
+        If the letting does not exist or if a ValueError occurs,
+        returns a 404 error page with an appropriate error message.
+    """
+
     try:
         letting = Letting.objects.get(id=int(letting_id))
     except Letting.DoesNotExist:

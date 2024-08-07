@@ -3,6 +3,17 @@ import sys
 
 
 def main():
+    """
+    Sets the DJANGO_SETTINGS_MODULE environment variable
+    to 'oc_lettings_site.settings'.
+    Attempts to import and execute Django's command-line utility for
+    administrative tasks.
+    
+    Raises:
+        ImportError: If Django is not installed or not available on the
+        PYTHONPATH environment variable, or if the virtual environment
+        is not activated.
+    """
     os.environ.setdefault('DJANGO_SETTINGS_MODULE',
                           'oc_lettings_site.settings')
     try:

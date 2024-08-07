@@ -1,3 +1,7 @@
+"""
+Module: asgi.py
+Description: This module contains the ASGI application used for serving the
+"""
 import os
 
 from django.core.asgi import get_asgi_application
