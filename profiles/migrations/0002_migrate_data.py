@@ -1,6 +1,7 @@
 # profiles/migrations/0002_migrate_data.py
 from django.db import migrations
 
+
 def migrate_profile_data(apps, schema_editor):
     OldProfile = apps.get_model('oc_lettings_site', 'Profile')
     NewProfile = apps.get_model('profiles', 'Profile')
@@ -10,6 +11,7 @@ def migrate_profile_data(apps, schema_editor):
             favorite_city=profile.favorite_city,
             user_id=profile.user_id
         )
+
 
 class Migration(migrations.Migration):
 
