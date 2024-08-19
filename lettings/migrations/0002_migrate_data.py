@@ -2,7 +2,10 @@
 from django.db import migrations
 
 def migrate_address_data(apps, schema_editor):
-    OldAddress = apps.get_model('oc_lettings_site', 'Address')
+    try:
+        OldAddress = apps.get_model('oc_lettings_site', 'Address')
+    except LookupError:
+        return
     NewAddress = apps.get_model('lettings', 'Address')
     for address in OldAddress.objects.all():
         NewAddress.objects.create(
@@ -16,7 +19,10 @@ def migrate_address_data(apps, schema_editor):
         )
 
 def migrate_letting_data(apps, schema_editor):
-    OldLetting = apps.get_model('oc_lettings_site', 'Letting')
+    try:
+        OldLetting = apps.get_model('oc_lettings_site', 'Letting')
+    except LookupError:
+        return
     NewLetting = apps.get_model('lettings', 'Letting')
     for letting in OldLetting.objects.all():
         NewLetting.objects.create(
