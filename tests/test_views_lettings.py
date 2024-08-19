@@ -25,6 +25,7 @@ class LettingViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'lettings/index.html')
         self.assertContains(response, 'Test Letting')
+        self.assertIn('lettings_list', response.context)
 
     def test_letting_view(self):
         response = self.client.get(
@@ -34,3 +35,19 @@ class LettingViewTests(TestCase):
         self.assertTemplateUsed(response, 'lettings/letting.html')
         self.assertContains(response, 'Test Letting')
         self.assertContains(response, 'Test Street')
+        self.assertEqual(response.context['title'], self.letting.title)
+        self.assertEqual(response.context['address'], self.letting.address)
+
+    def test_letting_view_not_found(self):
+        response = self.client.get(reverse('lettings:letting', args=[999]))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, '404.html')
+        self.assertContains(response, "Letting id n°999 does not exist !")
+
+    def test_letting_view_value_error(self):
+        response = self.client.get(reverse('lettings:letting',
+                                           args=['invalid_id']))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, '404.html')
+        self.assertContains(response, "ValueError : an number is requires but"
+                            + " got : invalid_id")

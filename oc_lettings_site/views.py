@@ -6,7 +6,7 @@ page of the application.
 """
 
 from django.shortcuts import render
-
+from oc_lettings_site.sentry_logger import sentry_log
 
 # Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque molestie
 # quam lobortis leo consectetur ullamcorper non id est. Praesent dictum, nulla
@@ -27,3 +27,15 @@ def index(request):
             HttpResponse: The rendered HTML page for the home page.
         """
     return render(request, "index.html")
+
+
+def error404(request, exception):
+    error = f"404 error : {exception}"
+    sentry_log(error_type="error", error_message=error)
+    return render(request, "404.html", {'error': str(exception)})
+
+
+def error500(request):
+    error = "500 error"
+    sentry_log(error_type="error", error_message=error)
+    return render(request, "500.html")

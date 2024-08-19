@@ -17,6 +17,6 @@ from lettings import views
 
 app_name = "lettings"
 urlpatterns = [
-    path("lettings/", views.index, name="lettings_index"),
-    path("lettings/<letting_id>/", views.letting, name="letting"),
+    path("", views.index, name="lettings_index"),
+    path("<letting_id>/", views.letting, name="letting"),
 ]

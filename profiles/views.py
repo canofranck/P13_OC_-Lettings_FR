@@ -67,6 +67,8 @@ def profile(request, username):
     except Profile.DoesNotExist:
         error = (f"Profile Not Exist : Username {username} "
                  "does not exist !")
-        return render(request, "404.html", {"error": error})
+
+        raise Http404(error)
+
     context = {'profile': profile}
     return render(request, 'profiles/profile.html', context)

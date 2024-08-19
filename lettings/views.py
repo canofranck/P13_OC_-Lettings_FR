@@ -7,6 +7,8 @@ listings of lettings and the details of individual lettings.
 
 from django.shortcuts import render
 from lettings.models import Letting
+from django.http import Http404
+from oc_lettings_site.sentry_logger import sentry_log
 
 # Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque molestie
 # quam lobortis leo consectetur ullamcorper non id est. Praesent dictum,
@@ -65,14 +67,18 @@ def letting(request, letting_id):
 
     try:
         letting = Letting.objects.get(id=int(letting_id))
+        context = {
+             'title': letting.title,
+             'address': letting.address,
+        }
+        return render(request, 'lettings/letting.html', context)
     except Letting.DoesNotExist:
         error = f"Letting id n°{letting_id} does not exist !"
-        return render(request, "404.html", {"error": error})
+        sentry_log(error_type="exception", error_message=error)
+        
+        raise Http404(error)
     except ValueError:
         error = f"ValueError : an number is requires but got : {letting_id}"
-        return render(request, "404.html", {"error": error})
-    context = {
-        'title': letting.title,
-        'address': letting.address,
-    }
-    return render(request, 'lettings/letting.html', context)
+        sentry_log(error_type="error", error_message=error)
+       
+        raise Exception(error)
