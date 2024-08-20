@@ -11,7 +11,6 @@ URL Patterns:
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls import handler404, handler500
 from . import views
 
 
