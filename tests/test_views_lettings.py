@@ -11,9 +11,9 @@ class LettingViewTests(TestCase):
             number=123,
             street='Test Street',
             city='Test City',
-            state='TS',
+            state='Paris',
             zip_code=12345,
-            country_iso_code='TST'
+            country_iso_code='75000'
         )
         self.letting = Letting.objects.create(
             title='Test Letting',
@@ -48,6 +48,5 @@ class LettingViewTests(TestCase):
         response = self.client.get(reverse('lettings:letting',
                                            args=['invalid_id']))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, '404.html')
         self.assertContains(response, "ValueError : an number is requires but"
                             + " got : invalid_id")

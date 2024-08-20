@@ -75,10 +75,9 @@ def letting(request, letting_id):
     except Letting.DoesNotExist:
         error = f"Letting id n°{letting_id} does not exist !"
         sentry_log(error_type="exception", error_message=error)
-        
+
         raise Http404(error)
     except ValueError:
         error = f"ValueError : an number is requires but got : {letting_id}"
         sentry_log(error_type="error", error_message=error)
-       
-        raise Exception(error)
+        raise Http404(error)

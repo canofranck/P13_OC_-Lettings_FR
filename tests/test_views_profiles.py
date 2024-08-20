@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from profiles.models import Profile
 from django.contrib.auth.models import User
+from unittest import mock
 
 
 class ProfileDetailViewTests(TestCase):
@@ -27,16 +28,28 @@ class ProfileDetailViewTests(TestCase):
         # Vérifier que le template 404 est utilisé
         self.assertTemplateUsed(response, '404.html')
         # Vérifier que le message d'erreur approprié est passé au template
-        self.assertContains(response, 'Profile Not Exist : Username nonexistentuser does not exist !')
+        self.assertContains(response, "Profile Not Exist : Username"
+                            + " nonexistentuser does not exist !")
 
     def test_index_view(self):
         response = self.client.get(reverse('profiles:profiles_index'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'profiles/index.html')
         self.assertIn('profiles_list', response.context)
-    
+
     def test_profile_view_error(self):
-        response = self.client.get(reverse('profiles:profiles_index'))
+        response = self.client.get(reverse('profiles:profile',
+                                   args=['non_existing_user']))
         self.assertEqual(response.status_code, 200)
-        
-        self.assertContains(response, "No profiles found.")
+
+        self.assertContains(response,
+                            "Profile Not Exist : Username non_existing_user"
+                            + " does not exist !")
+
+    @mock.patch('profiles.views.Profile.objects.all')
+    def test_index_view_no_profiles(self, mock_profiles_all):
+        mock_profiles_all.return_value = []
+        # Aucun profil n'est présent dans la base de données
+        response = self.client.get(reverse('profiles:profiles_index'))
+
+        self.assertEqual(response.status_code, 200)

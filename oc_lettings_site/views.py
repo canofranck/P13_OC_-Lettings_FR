@@ -15,6 +15,8 @@ from oc_lettings_site.sentry_logger import sentry_log
 # quis. Phasellus eleifend ex auctor venenatis tempus.Aliquam vitae erat ac
 # orci placerat luctus. Nullam elementum urna nisi, pellentesque iaculis enim
 # cursus in. Praesent volutpat porttitor magna, non finibus neque cursus id.
+
+
 def index(request):
     """
         View function for displaying the home page.

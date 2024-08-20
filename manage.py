@@ -8,7 +8,7 @@ def main():
     to 'oc_lettings_site.settings'.
     Attempts to import and execute Django's command-line utility for
     administrative tasks.
-    
+
     Raises:
         ImportError: If Django is not installed or not available on the
         PYTHONPATH environment variable, or if the virtual environment

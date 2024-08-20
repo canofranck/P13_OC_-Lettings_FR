@@ -34,7 +34,8 @@ def index(request):
         """
     profiles_list = Profile.objects.all()
     if not profiles_list:
-        raise Http404("No profiles found.")
+        error = ("No profiles found.")
+        raise Http404(error)
     context = {'profiles_list': profiles_list}
     return render(request, 'profiles/index.html', context)
 
