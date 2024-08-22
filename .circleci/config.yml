@@ -27,7 +27,7 @@ jobs:
       - run:
           name: Deploy
           command: echo "Deploying the project"
-          
+
 workflows:
   build_test_deploy:
     jobs:
