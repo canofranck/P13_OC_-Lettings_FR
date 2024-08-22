@@ -1,3 +1,5 @@
+version: 2.1
+
 orbs:
   python: circleci/python@3.12.2
 
@@ -15,3 +17,15 @@ jobs:
           root: ~/project
           paths:
             - .
+
+workflows:
+  build_test_deploy:
+    jobs:
+      - build_and_test
+      - deploy:
+          requires:
+            - build_and_test # only deploy if the build_and_test job has completed
+          filters:
+            branches:
+              only: main # only deploy when on main
+
