@@ -3,12 +3,11 @@ version: 2.1
 orbs:
   python: circleci/python@2.0.3
 
-
 jobs:
-  build_and_test: # this can be any name you choose
-    executor: python/default # use the default executor defined within the orb
+  build_and_test:
+    executor: python/default
     steps:
-      - checkout # checkout source code
+      - checkout
       - python/install-packages:
           pkg-manager: pip
       - run:
@@ -18,7 +17,8 @@ jobs:
           root: ~/project
           paths:
             - .
- deploy:
+
+  deploy:
     machine:
       image: ubuntu-2004:202010-01
     steps:
@@ -34,8 +34,7 @@ workflows:
       - build_and_test
       - deploy:
           requires:
-            - build_and_test # only deploy if the build_and_test job has completed
+            - build_and_test
           filters:
             branches:
-              only: main # only deploy when on main
-
+              only: main
