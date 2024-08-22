@@ -18,7 +18,16 @@ jobs:
           root: ~/project
           paths:
             - .
-
+ deploy:
+    machine:
+      image: ubuntu-2004:202010-01
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Deploy
+          command: echo "Deploying the project"
+          
 workflows:
   build_test_deploy:
     jobs:
