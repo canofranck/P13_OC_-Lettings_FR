@@ -4,7 +4,9 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-RUN pip install -q --upgrade pip && pip install -r requirements.txt
+ENV PIP_NO_PROGRESS_BAR=off
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
 
 
 COPY . .
