@@ -45,7 +45,7 @@ jobs:
       - run:
           name: Deploy to Render
           command: |
-            curl -X POST https://api.render.com/v1/services/YOUR_SERVICE_ID/deploys \
+            curl -X POST https://api.render.com/deploy/srv-cr65esjqf0us739vsms0?key=aFIRVa1uGFI \
             -H 'Authorization: Bearer YOUR_API_KEY' \
             -H 'Content-Type: application/json' \
             -d '{"clearCache": false}'
