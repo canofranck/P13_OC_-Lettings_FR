@@ -1,13 +1,15 @@
 FROM python:3.11
 ENV PYTHONUNBUFFERED  1 \
-    PYTHONDONTWRITEBYTECODE 1 
+    PYTHONDONTWRITEBYTECODE 1 \
+    PIP_NO_PROGRESS_BAR=off
 WORKDIR /app
 
 COPY requirements.txt .
 
-ENV PIP_NO_PROGRESS_BAR=off
-RUN pip install --upgrade pip==24.2
-RUN pip install -r requirements.txt
+
+RUN pip install --upgrade pip==24.0 --progress-bar off
+RUN pip install -r requirements.txt --progress-bar off
+
 
 
 
