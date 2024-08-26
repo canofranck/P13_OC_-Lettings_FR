@@ -3,10 +3,11 @@ version: 2.1
 orbs:
   python: circleci/python@2.0.3
   docker: circleci/docker@2.1.3
+
 jobs:
   build_and_test:
     docker:
-            - image: cimg/python:3.10.2
+      - image: cimg/python:3.10.2
     steps:
       - checkout
       - python/install-packages:
@@ -18,7 +19,8 @@ jobs:
           root: ~/project
           paths:
             - .
-build_docker_image:
+
+  build_docker_image:
     docker:
       - image: circleci/python:3.10
     steps:
