@@ -15,8 +15,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', "secret-key")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'P13_OC_-Lettings_FR.onrender.com']
-
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost").split(",")
 
 
 # Application definition
