@@ -6,7 +6,7 @@ WORKDIR /app
 COPY requirements.txt .
 
 ENV PIP_NO_PROGRESS_BAR=off
-RUN python -m pip install pip==24.2
+RUN pip install --upgrade pip==24.2
 RUN pip install -r requirements.txt
 
 
