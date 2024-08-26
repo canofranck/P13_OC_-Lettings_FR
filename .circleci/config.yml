@@ -49,7 +49,13 @@ jobs:
             -H 'Authorization: Bearer $RENDER_API_KEY' \
             -H 'Content-Type: application/json' \
             -d '{"image": "docker.io/$DOCKERHUB_USERNAME/my-app:latest", "clearCache": false}'
-
+      - run:
+        name: Verify deployment
+        command: |
+          curl -X GET https://api.render.com/services/$RENDER_SITE_URL?key=$RENDER_API_KEY \
+          -H 'Authorization: Bearer $RENDER_API_KEY' \
+          | jq '.status'
+          
 workflows:
   build_test_deploy:
     jobs:
