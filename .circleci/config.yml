@@ -35,19 +35,6 @@ jobs:
           command: |
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
             docker push $DOCKERHUB_USERNAME/my-app:latest
-  collect_static_files:
-    docker:
-      - image: cimg/python:3.10.2
-    steps:
-      - checkout
-      - run:
-          name: Collect static files
-          command: |
-            docker run --rm \
-            -v ~/$DOCKERHUB_USERNAME:/app \
-            -w /app \
-            $DOCKERHUB_USERNAME/my-app:latest \
-            python manage.py collectstatic --noinput
 
   deploy:
     machine:
@@ -70,12 +57,9 @@ workflows:
       - build_docker_image:
           requires:
             - build_and_test
-      - collect_static_files:
-          requires:
-            - build_docker_image
       - deploy:
           requires:
-            - collect_static_files
+            - build_docker_image
           filters:
             branches:
               only: etape-4
