@@ -44,7 +44,7 @@ jobs:
           name: Collect static files
           command: |
             docker run --rm \
-            -v ~/project:/app \
+            -v ~/$DOCKERHUB_USERNAME:/app \
             -w /app \
             $DOCKERHUB_USERNAME/my-app:latest \
             python manage.py collectstatic --noinput
