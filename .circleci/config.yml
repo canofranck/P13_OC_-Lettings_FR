@@ -45,7 +45,7 @@ jobs:
       - run:
           name: Deploy to Render
           command: |
-            curl -X POST ttps://api.render.com/deploy/$RENDER_SITE_URL?key=$RENDER_API_KEY \
+            curl -X POST https://api.render.com/deploy/$RENDER_SITE_URL?key=$RENDER_API_KEY \
             -H 'Authorization: Bearer $RENDER_API_KEY' \
             -H 'Content-Type: application/json' \
             -d '{"image": "docker.io/$DOCKERHUB_USERNAME/my-app:latest", "clearCache": false}'
