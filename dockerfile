@@ -9,13 +9,13 @@ COPY requirements.txt .
 
 RUN pip install --upgrade pip==24.0 --progress-bar off
 RUN pip install -r requirements.txt --progress-bar off
-RUN python manage.py collectstatic --noinput
+
 
 
 
 COPY . .
 
-
+RUN python manage.py collectstatic --noinput
 RUN chmod a+x start_render.sh
 EXPOSE 8000
 
