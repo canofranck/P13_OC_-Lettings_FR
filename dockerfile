@@ -15,7 +15,7 @@ RUN pip install -r requirements.txt --progress-bar off
 
 COPY . .
 
-RUN python manage.py collectstatic --noinput
+
 RUN chmod a+x start_render.sh
 EXPOSE 8000
 
