@@ -16,7 +16,7 @@ RUN pip install -r requirements.txt --progress-bar off
 COPY . .
 
 # Donne les permissions d'exécution à start_render.sh
-RUN chmod +x start_render.sh
+RUN chmod a+x start_render.sh
 
 EXPOSE 8000
 
