@@ -2,7 +2,7 @@
 from django.db import migrations
 
 def migrate_profile_data(apps, schema_editor):
-    OldProfile = apps.get_model('oc_lettings_site', 'Profile')
+    
     try:
         OldProfile = apps.get_model('oc_lettings_site', 'Profile')
     except LookupError:
