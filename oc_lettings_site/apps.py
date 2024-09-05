@@ -17,4 +17,4 @@ class OCLettingsSiteConfig(AppConfig):
     functionalities related to properties in the Django project.
     """
     name = 'oc_lettings_site'
-    label = 'oc_lettings_site'
+
