@@ -3,12 +3,22 @@ from django.db import migrations
 
 def migrate_profile_data(apps, schema_editor):
     OldProfile = apps.get_model('oc_lettings_site', 'Profile')
+    try:
+        OldProfile = apps.get_model('oc_lettings_site', 'Profile')
+    except LookupError:
+        return
     NewProfile = apps.get_model('profiles', 'Profile')
-    for profile in OldProfile.objects.all():
+    
+    user = apps.get_model('auth', 'User')
+
+    user_map = {user.id: user for user in user.objects.all()}
+
+    for OldProfile in OldProfile.objects.all():
+        user = user_map[OldProfile.user_id]
         NewProfile.objects.create(
-            id=profile.id,
-            favorite_city=profile.favorite_city,
-            user_id=profile.user_id
+            
+            user=user,
+            favorite_city=OldProfile.favorite_city
         )
 
 class Migration(migrations.Migration):
