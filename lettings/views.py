@@ -33,9 +33,19 @@ def index(request):
             HttpResponse:The rendered HTML page displaying the list of lettings
         """
 
+    sentry_log(
+        error_type="message",
+        error_message=(
+            f"User request to display the lettings page: {request.user}"
+            )
+    )
     lettings_list = Letting.objects.all()
     context = {'lettings_list': lettings_list}
-    return render(request, 'lettings/index.html', context)
+    response = render(request, 'lettings/index.html', context)
+    sentry_log(
+        error_type="message",
+        error_message="Lettings page successfully returned.")
+    return response
 
 # Cras ultricies dignissim purus, vitae hendrerit ex varius non. In accumsan
 # porta nisl id eleifend. Praesent dignissim, odio eu consequat pretium, purus
@@ -66,11 +76,17 @@ def letting(request, letting_id):
     """
 
     try:
+        sentry_log(
+            error_type="message",
+            error_message=f"Letting request initiated by user: {request.user}")
         letting = Letting.objects.get(id=int(letting_id))
         context = {
              'title': letting.title,
              'address': letting.address,
         }
+        sentry_log(
+            error_type="message",
+            error_message=f"Letting details found for ID: {letting_id}")
         return render(request, 'lettings/letting.html', context)
     except Letting.DoesNotExist:
         error = f"Letting id n°{letting_id} does not exist !"

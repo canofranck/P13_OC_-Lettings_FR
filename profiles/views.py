@@ -8,7 +8,7 @@ listings of usr profiles and the details of individual profiles.
 from django.shortcuts import render
 from profiles.models import Profile
 from django.http import Http404
-
+from oc_lettings_site.sentry_logger import sentry_log
 
 # Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque molestie
 # quam lobortis leo consectetur ullamcorper non id est. Praesent dictum, nulla
@@ -32,11 +32,17 @@ def index(request):
             HttpResponse: The rendered HTML page displaying the list of
             user profiles.
         """
+    sentry_log(
+        error_type="message",
+        error_message=f"User-initiated profile index query : {request.user}")
     profiles_list = Profile.objects.all()
     if not profiles_list:
         error = ("No profiles found.")
         raise Http404(error)
     context = {'profiles_list': profiles_list}
+    sentry_log(
+        error_type="message",
+        error_message="List of profiles successfully retrieved.")
     return render(request, 'profiles/index.html', context)
 
 # Aliquam sed metus eget nisi tincidunt ornare accumsan eget lac
@@ -64,6 +70,9 @@ def profile(request, username):
             appropriate error message.
         """
     try:
+        sentry_log(
+            error_type="message",
+            error_message=f"Profile query initiated for the user : {username}")
         profile = Profile.objects.get(user__username=username)
     except Profile.DoesNotExist:
         error = (f"Profile Not Exist : Username {username} "
