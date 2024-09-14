@@ -1,7 +1,7 @@
 import os
+from dotenv import load_dotenv
 from pathlib import Path
 import sentry_sdk
-from dotenv import load_dotenv
 
 load_dotenv()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -12,11 +12,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY', "secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-ALLOWED_HOSTS = ['*']
+DEBUG = os.getenv('DEBUG', "False") == "True"
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
 
 
 # Application definition
@@ -35,13 +35,14 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'oc_lettings_site.urls'
@@ -127,14 +128,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [BASE_DIR / "static",]
 STORAGES = {
-    'staticfiles': {
-        'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage',
-    },
+        "default": {
+            "BACKEND": "django.core.files.storage.FileSystemStorage",
+        },
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        },
 }
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

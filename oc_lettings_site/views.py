@@ -28,7 +28,16 @@ def index(request):
         Returns:
             HttpResponse: The rendered HTML page for the home page.
         """
-    return render(request, "index.html")
+    sentry_log(
+        error_type="message",
+        error_message=(
+          f"User-initiated request to display the home page : {request.user}")
+    )
+    response = render(request, "index.html")
+    sentry_log(
+        error_type="message",
+        error_message="Home page successfully rendered.")
+    return response
 
 
 def error404(request, exception):
