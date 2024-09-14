@@ -47,3 +47,20 @@ To run the CircleCI pipeline properly, set up the following environment variable
 
 4. Configuration Render
 
+    On Render, now create your Web Service`_
+
+    Then define environment variables on the Render Web Service :
+    - **ALLOWED_HOSTS** : enter allowed host 
+
+    - **DEBUG** : select True or False
+
+    - **DOCKERHUB_PASSWORD** : Docker account password
+
+    - **DOCKERHUB_USERNAME** : Docker account username
+
+    - **SECRET_KEY** : Django secret key
+
+    - **SENTRY_DSN** : Sentry project URL
+        
+    
+    
