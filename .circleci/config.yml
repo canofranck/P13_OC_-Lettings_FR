@@ -62,4 +62,4 @@ workflows:
             - build_docker_image
           filters:
             branches:
-              only: etape-4
+              only: main
