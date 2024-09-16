@@ -63,4 +63,4 @@ To run the CircleCI pipeline properly, set up the following environment variable
     - **SENTRY_DSN** : Sentry project URL
         
     
-    
+    - TEST RENDER
