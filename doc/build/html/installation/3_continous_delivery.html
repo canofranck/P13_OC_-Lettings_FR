@@ -36,7 +36,8 @@
             
   <section id="deployment">
 <h1>3. Deployment<a class="headerlink" href="#deployment" title="Link to this heading">¶</a></h1>
-<p>1.Prerequisites</p>
+<ol class="arabic">
+<li><p>Prerequisites</p>
 <blockquote>
 <div><p>In order to perform the deployment and continuous integration of the app, the following accounts are required:</p>
 <p>GitHub account</p>
@@ -45,20 +46,20 @@
 <p>Render account</p>
 <p>Sentry account</p>
 </div></blockquote>
-<ol class="arabic simple" start="2">
-<li><p>Summary</p></li>
-</ol>
-<p>The deployment of the app is automated by the CircleCI pipeline. When updates are pushed to the GitHub repository, the pipeline triggers the test suite and code linting for all project branches. If updates are made on the master branch, and if and only if the tests and linting pass, the workflow:</p>
+</li>
+<li><p>Summary</p>
+<blockquote>
+<div><p>The deployment of the app is automated by the CircleCI pipeline. When updates are pushed to the GitHub repository, the pipeline triggers the test suite and code linting for all project branches. If updates are made on the master branch, and if and only if the tests and linting pass, the workflow:</p>
 <p>Builds a Docker image and pushes it to DockerHub</p>
 <p>If and only if the previous step passes, deploys the app on Render</p>
-<ol class="arabic simple" start="3">
-<li><p>Configuration CircleCI</p></li>
-</ol>
-<p>After cloning the project, setting up the local virtual environment (see Local development) and creating the required accounts, set up a new project on CircleCI via “Set Up Project”.</p>
+</div></blockquote>
+</li>
+<li><p>Configuration CircleCI</p>
+<blockquote>
+<div><p>After cloning the project, setting up the local virtual environment (see Local development) and creating the required accounts, set up a new project on CircleCI via “Set Up Project”.</p>
 <p>Select the master branch as a source for the .circleci/config.yml file</p>
 <p>To run the CircleCI pipeline properly, set up the following environment variables (Project Settings &gt; Environment Variables):</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><strong>ALLOWED_HOSTS</strong> : enter allowed host</p></li>
 <li><p><strong>DEBUG</strong> : select True or False</p></li>
 <li><p><strong>DOCKERHUB_PASSWORD</strong> : Docker account password</p></li>
@@ -68,10 +69,10 @@
 <li><p><strong>SENTRY_DSN</strong> : Sentry project URL</p></li>
 </ul>
 </div></blockquote>
-<ol class="arabic" start="4">
+</li>
 <li><p>Configuration Render</p>
 <blockquote>
-<div><p>On Render, now create your Web Service`_</p>
+<div><p>On Render, now create your Web Service</p>
 <p>Then define environment variables on the Render Web Service :
 - <strong>ALLOWED_HOSTS</strong> : enter allowed host</p>
 <ul class="simple">
@@ -80,7 +81,6 @@
 <li><p><strong>DOCKERHUB_USERNAME</strong> : Docker account username</p></li>
 <li><p><strong>SECRET_KEY</strong> : Django secret key</p></li>
 <li><p><strong>SENTRY_DSN</strong> : Sentry project URL</p></li>
-<li><p>TEST RENDER</p></li>
 </ul>
 </div></blockquote>
 </li>

@@ -43,8 +43,8 @@
 <section id="specifications">
 <h2>1. Specifications<a class="headerlink" href="#specifications" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/canofranck/P13_OC_-Lettings_FR/blob/main/Site_web_2_0_caractéristiques_et_améliorations.pdf">App specifications</a></p></li>
-<li><p><a class="reference external" href="https://github.com/canofranck/P13_OC_-Lettings_FR/blob/main/Configuration_Read_the_Docs.pdf">Doc specifications</a></p></li>
+<li><p><a class="reference external" href="https://github.com/canofranck/P13_OC_-Lettings_FR/blob/main/specifications/Site_web_2_0_caractéristiques_et_améliorations.pdf">App specifications</a></p></li>
+<li><p><a class="reference external" href="https://github.com/canofranck/P13_OC_-Lettings_FR/blob/main/specifications/Configuration_Read_the_Docs.pdf">Doc specifications</a></p></li>
 </ul>
 </section>
 <section id="project-description">
@@ -54,7 +54,7 @@
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>Addressing various technical debts in the project</p></li>
-<li><p><a class="reference external" href="https://hub.docker.com/r/nidalchateur/oc_lettings_site">Dockerize</a></p></li>
+<li><p><a class="reference external" href="https://hub.docker.com/repository/docker/fcr77/my-app/general">Dockerize</a></p></li>
 <li><p>Implementation of a CI/CD pipeline using <a class="reference external" href="https://app.circleci.com/pipelines/circleci/Y8j2gRnHZve8of2ZKg9fsg">CircleCI</a> and deployment on <a class="reference external" href="https://dashboard.render.com/">Render</a></p></li>
 <li><p>Monitoring the application and tracking errors through <a class="reference external" href="https://studiant.sentry.io/issues/?project=4507763329531984&amp;query=&amp;referrer=issue-list&amp;statsPeriod=30d">Sentry</a></p></li>
 <li><p>Creation of the technical documentation for the application using <a class="reference external" href="https://about.readthedocs.com/">Read The Docs</a> and <a class="reference external" href="https://github.com/sphinx-doc/sphinx">Sphinx</a></p></li>
@@ -74,23 +74,25 @@
 </section>
 <section id="developement-packages">
 <h2>4. Developement packages<a class="headerlink" href="#developement-packages" title="Link to this heading">¶</a></h2>
-<p>During local development, we use <strong>.env</strong></p>
+<p>During local development, we use <strong>.venv</strong></p>
 <ul class="simple">
-<li><p>django 5.0.8</p></li>
-</ul>
-</section>
-<section id="test-packages">
-<h2>5. Test packages<a class="headerlink" href="#test-packages" title="Link to this heading">¶</a></h2>
-<p>During tests, we also use <strong>oc_lettings_site/settings/local.py</strong>
-(no environment variable for local tests)</p>
-<dl class="simple">
-<dt>Circleci environment variables:</dt><dd><ul class="simple">
-<li><p><strong>DOCKERHUB_USERNAME</strong> (acquired from Docker hub)</p></li>
-<li><p><strong>DOCKERHUB_PASSWORD</strong> (acquired from Docker hub)</p></li>
+<li><dl class="simple">
+<dt>django 5.0.8</dt><dd><ul>
+<li><p><strong>SECRET_KEY</strong> : Django secret key</p></li>
+<li><p><strong>SENTRY_DSN</strong> : Sentry project URL</p></li>
+<li><p><strong>ALLOWED_HOSTS</strong> : enter allowed host</p></li>
+<li><p><strong>DEBUG</strong> : select True or False</p></li>
+<li><p><strong>DOCKERHUB_PASSWORD</strong> : Docker account password</p></li>
+<li><p><strong>DOCKERHUB_USERNAME</strong> : Docker account username</p></li>
 <li><p><strong>HOOK_RENDER</strong> (acquired from Render)</p></li>
 </ul>
 </dd>
 </dl>
+</li>
+</ul>
+</section>
+<section id="test-packages">
+<h2>5. Test packages<a class="headerlink" href="#test-packages" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>pytest 8.3.2</p></li>
 <li><p>pytest-cov 5.0.0</p></li>
@@ -101,21 +103,13 @@
 </section>
 <section id="production-packages">
 <h2>6. Production packages<a class="headerlink" href="#production-packages" title="Link to this heading">¶</a></h2>
-<p>During production, we use <strong>oc_lettings_site/settings/production.py</strong></p>
-<dl class="simple">
-<dt>Render environment variables:</dt><dd><ul class="simple">
-<li><p><strong>SECRET_KEY</strong></p></li>
-<li><p><strong>SENTRY_DSN</strong></p></li>
-<li><p><strong>ALLOWED_HOSTS</strong></p></li>
-<li><p><strong>DEBUG</strong></p></li>
-<li><p><strong>DOCKERHUB_PASSWORD</strong></p></li>
-<li><p><strong>DOCKERHUB_USERNAME</strong></p></li>
+<blockquote>
+<div><ul class="simple">
 <li><p>gunicorn 23.0.0</p></li>
 <li><p>whitenoise 6.7.0</p></li>
 <li><p>sentry-sdk 2.13.0</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </section>
 <section id="database-models">
 <h2>7. Database models<a class="headerlink" href="#database-models" title="Link to this heading">¶</a></h2>

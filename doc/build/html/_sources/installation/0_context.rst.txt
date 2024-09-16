@@ -4,8 +4,8 @@ Context
 1. Specifications
 -----------------
 
-- `App specifications <https://github.com/canofranck/P13_OC_-Lettings_FR/blob/main/Site_web_2_0_caractéristiques_et_améliorations.pdf>`_ 
-- `Doc specifications <https://github.com/canofranck/P13_OC_-Lettings_FR/blob/main/Configuration_Read_the_Docs.pdf>`_ 
+- `App specifications <https://github.com/canofranck/P13_OC_-Lettings_FR/blob/main/specifications/Site_web_2_0_caractéristiques_et_améliorations.pdf>`_ 
+- `Doc specifications <https://github.com/canofranck/P13_OC_-Lettings_FR/blob/main/specifications/Configuration_Read_the_Docs.pdf>`_ 
 
 2. Project description
 ----------------------
@@ -14,7 +14,7 @@ Context
 
       1. Addressing various technical debts in the project  
 
-      2. `Dockerize <https://hub.docker.com/r/nidalchateur/oc_lettings_site>`_  
+      2. `Dockerize <https://hub.docker.com/repository/docker/fcr77/my-app/general>`_  
 
       3. Implementation of a CI/CD pipeline using `CircleCI <https://app.circleci.com/pipelines/circleci/Y8j2gRnHZve8of2ZKg9fsg>`_ and deployment on `Render <https://dashboard.render.com/>`_  
 
@@ -35,22 +35,19 @@ Context
 4. Developement packages
 ------------------------
 
-During local development, we use **.env**
+During local development, we use **.venv**
 
 - django 5.0.8
-
+   - **SECRET_KEY** : Django secret key
+   - **SENTRY_DSN** : Sentry project URL
+   - **ALLOWED_HOSTS** : enter allowed host 
+   - **DEBUG** : select True or False
+   - **DOCKERHUB_PASSWORD** : Docker account password
+   - **DOCKERHUB_USERNAME** : Docker account username
+   - **HOOK_RENDER** (acquired from Render)
 
 5. Test packages
 ----------------
-
-During tests, we also use **oc_lettings_site/settings/local.py**
-(no environment variable for local tests)
-
-Circleci environment variables: 
-   - **DOCKERHUB_USERNAME** (acquired from Docker hub)
-   - **DOCKERHUB_PASSWORD** (acquired from Docker hub)
-   - **HOOK_RENDER** (acquired from Render)
-
 
 - pytest 8.3.2
 - pytest-cov 5.0.0
@@ -61,15 +58,6 @@ Circleci environment variables:
 6. Production packages
 ----------------------
 
-During production, we use **oc_lettings_site/settings/production.py**
-
-Render environment variables: 
-   - **SECRET_KEY** 
-   - **SENTRY_DSN** 
-   - **ALLOWED_HOSTS**
-   - **DEBUG**
-   - **DOCKERHUB_PASSWORD**
-   - **DOCKERHUB_USERNAME**
    - gunicorn 23.0.0
    - whitenoise 6.7.0
    - sentry-sdk 2.13.0
