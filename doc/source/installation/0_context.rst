@@ -4,8 +4,8 @@ Context
 1. Specifications
 -----------------
 
-- `App specifications <https://github.com/`_ 
-- `Doc specifications <https://github.com/`_ 
+- `App specifications <https://github.com/canofranck/P13_OC_-Lettings_FR/blob/main/Site_web_2_0_caractéristiques_et_améliorations.pdf>`_ 
+- `Doc specifications <https://github.com/canofranck/P13_OC_-Lettings_FR/blob/main/Configuration_Read_the_Docs.pdf>`_ 
 
 2. Project description
 ----------------------
@@ -33,7 +33,7 @@ Context
 - pip 24.2
 
 4. Developement packages
------------------------
+------------------------
 
 During local development, we use **.env**
 
@@ -70,9 +70,9 @@ Render environment variables:
    - **DEBUG**
    - **DOCKERHUB_PASSWORD**
    - **DOCKERHUB_USERNAME**
-- gunicorn 23.0.0
-- whitenoise 6.7.0
-- sentry-sdk 2.13.0
+   - gunicorn 23.0.0
+   - whitenoise 6.7.0
+   - sentry-sdk 2.13.0
 
 
 7. Database models
