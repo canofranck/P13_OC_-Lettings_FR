@@ -55,6 +55,11 @@ During local development, we use **.venv**
 - flake8 7.1.1
 - flake8-html 0.4.3
 
+for test coverage use : 
+   .. code-block:: console
+
+      $ pytest --cov=. tests/
+
 6. Production packages
 ----------------------
 
@@ -67,6 +72,7 @@ During local development, we use **.venv**
 ------------------
 
 .. py:class:: class Address(models.Model):
+
    - number = models.PositiveIntegerField(validators=[MaxValueValidator(9999)])
    - street = models.CharField(max_length=64)
    - city = models.CharField(max_length=64)
@@ -76,11 +82,13 @@ During local development, we use **.venv**
 
 
 .. py:class:: class Letting(models.Model):
+
    - title = models.CharField(max_length=256)
    - address = models.OneToOneField(Address, on_delete=models.CASCADE)
 
 
 .. py:class:: class Profile(models.Model):
+   
    - user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profiles_profile')
    - favorite_city = models.CharField(max_length=64, blank=True)
 

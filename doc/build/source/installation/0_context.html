@@ -100,6 +100,12 @@
 <li><p>flake8 7.1.1</p></li>
 <li><p>flake8-html 0.4.3</p></li>
 </ul>
+<dl>
+<dt>for test coverage use :</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pytest<span class="w"> </span>--cov<span class="o">=</span>.<span class="w"> </span>tests/
+</pre></div>
+</div>
+</dd>
+</dl>
 </section>
 <section id="production-packages">
 <h2>6. Production packages<a class="headerlink" href="#production-packages" title="Link to this heading">¶</a></h2>
@@ -116,37 +122,33 @@
 <dl class="py class">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">class</span> <span class="pre">Address(models.Model):</span></span></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">number</span> <span class="pre">=</span> <span class="pre">models.PositiveIntegerField(validators=[MaxValueValidator(9999)])</span></span></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">street</span> <span class="pre">=</span> <span class="pre">models.CharField(max_length=64)</span></span></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">city</span> <span class="pre">=</span> <span class="pre">models.CharField(max_length=64)</span></span></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">state</span> <span class="pre">=</span> <span class="pre">models.CharField(max_length=2,</span> <span class="pre">validators=[MinLengthValidator(2)])</span></span></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">zip_code</span> <span class="pre">=</span> <span class="pre">models.PositiveIntegerField(validators=[MaxValueValidator(99999)])</span></span></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">country_iso_code</span> <span class="pre">=</span> <span class="pre">models.CharField(max_length=3,</span> <span class="pre">validators=[MinLengthValidator(3)])</span></span></dt>
-<dd></dd></dl>
+<dd><ul class="simple">
+<li><p>number = models.PositiveIntegerField(validators=[MaxValueValidator(9999)])</p></li>
+<li><p>street = models.CharField(max_length=64)</p></li>
+<li><p>city = models.CharField(max_length=64)</p></li>
+<li><p>state = models.CharField(max_length=2, validators=[MinLengthValidator(2)])</p></li>
+<li><p>zip_code = models.PositiveIntegerField(validators=[MaxValueValidator(99999)])</p></li>
+<li><p>country_iso_code = models.CharField(max_length=3, validators=[MinLengthValidator(3)])</p></li>
+</ul>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">class</span> <span class="pre">Letting(models.Model):</span></span></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">title</span> <span class="pre">=</span> <span class="pre">models.CharField(max_length=256)</span></span></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">address</span> <span class="pre">=</span> <span class="pre">models.OneToOneField(Address,</span> <span class="pre">on_delete=models.CASCADE)</span></span></dt>
-<dd></dd></dl>
+<dd><ul class="simple">
+<li><p>title = models.CharField(max_length=256)</p></li>
+<li><p>address = models.OneToOneField(Address, on_delete=models.CASCADE)</p></li>
+</ul>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">class</span> <span class="pre">Profile(models.Model):</span></span></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">user</span> <span class="pre">=</span> <span class="pre">models.OneToOneField(User,</span> <span class="pre">on_delete=models.CASCADE,</span> <span class="pre">related_name='profiles_profile')</span></span></dt>
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">-</span> <span class="pre">favorite_city</span> <span class="pre">=</span> <span class="pre">models.CharField(max_length=64,</span> <span class="pre">blank=True)</span></span></dt>
-<dd></dd></dl>
+<dd><ul class="simple">
+<li><p>user = models.OneToOneField(User, on_delete=models.CASCADE, related_name=’profiles_profile’)</p></li>
+<li><p>favorite_city = models.CharField(max_length=64, blank=True)</p></li>
+</ul>
+</dd></dl>
 
 </section>
 </section>

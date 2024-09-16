@@ -27,7 +27,6 @@
      .. code-block:: console
 
          $ cd P13_OC_-Lettings_FR
-         $ python -m venv venv
          $ pipenv install -r requirements.txt
 
 4. tests
@@ -43,3 +42,14 @@
    .. code-block:: console
     
          $ flake8 --format=html --htmldir=flake-report 
+
+6. Read the docs
+----------------
+
+   to make doc locally :
+   .. code-block:: console
+    
+         $ sphinx-build -b html doc/ doc/build/
+
+   to see online doc : https://p13-oc-lettings-fr.readthedocs.io/fr/latest/
+

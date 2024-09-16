@@ -54,6 +54,7 @@
     On Render, now create your Web Service
 
     Then define environment variables on the Render Web Service :
+    
     - **ALLOWED_HOSTS** : enter allowed host 
 
     - **DEBUG** : select True or False

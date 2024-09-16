@@ -27,7 +27,6 @@
      .. code-block:: console
 
          $ cd P13_OC_-Lettings_FR
-         $ python -m venv venv
          $ pipenv install -r requirements.txt
 
 4. tests

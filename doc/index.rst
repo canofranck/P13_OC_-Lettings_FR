@@ -11,7 +11,7 @@ OC LETTINGS documentation
 
 .. toctree::
    :maxdepth: 2
-   :caption: Guide d'installation
+   :caption: Installation guide
 
    source/installation/0_context.rst
    source/installation/1_install.rst
