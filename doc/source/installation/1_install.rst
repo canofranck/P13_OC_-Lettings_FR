@@ -47,6 +47,7 @@
 ----------------
 
    to make doc locally :
+   
    .. code-block:: console
     
          $ sphinx-build -b html doc/ doc/build/

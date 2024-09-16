@@ -9,7 +9,7 @@
 
     Change to the project directory cd /path/to/Python-OC-Lettings-FR
 
-    Make sure that the .env file has been previously created (see Environment variables)
+    Make sure that the .venv file has been previously created (see Developement packages)
 
     Build image docker build -t <image-name> . with the desired image name
 

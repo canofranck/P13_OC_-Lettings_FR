@@ -42,3 +42,15 @@
    .. code-block:: console
     
          $ flake8 --format=html --htmldir=flake-report 
+
+6. Read the docs
+----------------
+
+   to make doc locally :
+   
+   .. code-block:: console
+    
+         $ sphinx-build -b html doc/ doc/build/
+
+   to see online doc : https://p13-oc-lettings-fr.readthedocs.io/fr/latest/
+
