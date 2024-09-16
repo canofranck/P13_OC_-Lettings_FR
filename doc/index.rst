@@ -15,8 +15,7 @@ documentation for details.
    :maxdepth: 2
    :caption: Contents:
 
-
-   installation/0_context.rst
-   installation/1_install.rst
-   installation/2_docker.rst
-   installation/3_continous_delivery.rst
+   source/installation/0_context.rst
+   source/installation/1_install.rst
+   source/installation/2_docker.rst
+   source/installation/3_continuous_delivery.rst
