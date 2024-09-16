@@ -4,7 +4,7 @@
 1. install
 
 
-   **Clone the repository **
+   **Clone the repository**
 
       .. code-block:: console
 
