@@ -22,3 +22,7 @@ exclude_patterns = []
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'nature'
+html_static_path = ["_static"]
+
+locale_dirs = ["locale/"]  # path is example but recommended.
+gettext_compact = False
