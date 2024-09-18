@@ -75,7 +75,7 @@ def profile(request, username):
             error_message=f"Profile query initiated for the user : {username}")
         profile = Profile.objects.get(user__username=username)
     except Profile.DoesNotExist:
-        error = (f"Profile Not Exist : Username {username} "
+        error = (f"Profile Not Exist : Profil {username} "
                  "does not exist !")
 
         raise Http404(error)
