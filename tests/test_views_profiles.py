@@ -28,7 +28,7 @@ class ProfileDetailViewTests(TestCase):
         # Vérifier que le template 404 est utilisé
         self.assertTemplateUsed(response, '404.html')
         # Vérifier que le message d'erreur approprié est passé au template
-        self.assertContains(response, "Profile Not Exist : Username"
+        self.assertContains(response, "Profile Not Exist : Profil"
                             + " nonexistentuser does not exist !")
 
     def test_index_view(self):
@@ -43,7 +43,7 @@ class ProfileDetailViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
 
         self.assertContains(response,
-                            "Profile Not Exist : Username non_existing_user"
+                            "Profile Not Exist : Profil non_existing_user"
                             + " does not exist !")
 
     @mock.patch('profiles.views.Profile.objects.all')
