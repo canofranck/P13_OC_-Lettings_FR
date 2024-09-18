@@ -41,7 +41,6 @@ Améliorations du site **OC Lettings**  à partir du projet
 - **[Pipeline CircleCI de ce projet](https://app.circleci.com/pipelines/circleci/Y8j2gRnHZve8of2ZKg9fsg/2b1xXDiCYs1GasDFi41jgQ/92/workflows/e9cd018d-7697-4d46-839f-aeb0fcb86d44)**
 - **[Images Docker disponibles](https://hub.docker.com/r/fcr77/my-app)**
 - **[Application déployée sur Render](https://dashboard.render.com/web/srv-cr68jabtq21c73bb9u00)**
-- **[Exemple d'erreur sur Sentry](https://sentry.io/share/issue/0d3464c341cb4269809496e18d7c78aa/)**
 
 <a name="doc"></a>
 # Documentation du projet 
